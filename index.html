@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Hogwarts Adventure</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <script src="script.js"></script>
+
+
+    <div id="game-container">
+        <p id="story-text">Welcome to Hogwarts!</p>
+    </div>
+
+    
+    
+    <div id="consent-box">
+        <p id="consent-text">Do you want to join Hogwarts?</p>
+        <button id="yes-btn">Yes</button>
+        <button id="no-btn">No</button>
+    </div>
+
+   
+    <div id="maybe-box">
+        <p id="maybe-text">Maybe next time, young wizard!</p>
+        <button id="ok-btn">OK</button>
+    </div>
+
+
+   
+    <div id="name-box">
+        <p id="name-text">Enter your name, young wizard:</p>
+        <input type="text" id="player-name" placeholder="Your name here">
+        <button id="start-btn">Start</button>
+    </div>
+
+
+ 
+    <div id="house-box">
+         <p id="house-text">Choose Your House</p>
+         <div class="house-options">
+              <div class="house">
+                  <img src="images/gryffindor.jpg" class="house-icon" data-house="Gryffindor" alt="Gryffindor">
+                  <p class="house-name">Gryffindor</p>
+              </div>
+              <div class="house">
+                 <img src="images/ravenclawCrest.jpg" class="house-icon" data-house="Ravenclaw" alt="Ravenclaw">
+                 <p class="house-name">Ravenclaw</p>
+              </div>
+              <div class="house">
+                <img src="images/hufflepuff.jpg" class="house-icon" data-house="Hufflepuff" alt="Hufflepuff">
+                <p class="house-name">Hufflepuff</p>
+              </div>
+              <div class="house">
+               <img src="images/slytherin.jpg" class="house-icon" data-house="Slytherin" alt="Slytherin">
+               <p class="house-name">Slytherin</p>
+             </div>
+         </div>
+    </div>
+
+    <!-- Pet Selection Box -->
+    <div id="pet-box" style="display: none;">
+        <h2>Choose Your Pet</h2>
+        <div class="pet-option" data-pet="Owl">🦉 Owl</div>
+        <div class="pet-option" data-pet="Cat">🐱 Cat</div>
+        <div class="pet-option" data-pet="Toad">🐸 Toad</div>
+        <div class="pet-option" data-pet="Rat">🐭 Rat</div>
+    </div>
+
+    
+
+
+
+    <div id="background-blur"></div>
+    <!-- House Common Room Section (Initially Hidden) -->
+    <div id="common-room" class="hidden">
+         <h1 id="welcome-text"></h1>
+         <p id="common-room-desc"></p>
+
+         <div class="common-room-options">
+             <button onclick="exploreCommonRoom()">Explore</button>
+             <button onclick="talkToSenior()">Talk to a Senior</button>
+             <button onclick="goToDorm()">Go to Dormitory</button>
+             <p id="pet-display" style="font-weight: bold; color: white;"></p>
+         </div>
+    </div>
+
+
+
+    
+
+
+</body>
+</html>
