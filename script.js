@@ -129,6 +129,17 @@ const bookOptions = {
 
 // Track exploration history for back navigation
 let historyStack = [];
+let lives = 3;
+let rewards = [];
+let level = 1;
+
+function updateStats() {
+    document.getElementById("lives").innerText = `❤️ Lives: ${lives}`;
+    document.getElementById("level").innerText = `📖 Level: ${level}`;
+    document.getElementById("reward").innerText = `🎁 Rewards: ${rewards.length > 0 ? rewards.join(", ") : "None"}`;
+}
+
+
 
 // Function to show book selection
 function showBooks() {
@@ -141,6 +152,8 @@ function showBooks() {
         btn.classList.add("explore-option");
         btn.addEventListener("click", function () {
             historyStack = []; // Reset history when selecting a new book
+            level = 1;
+            updateStats();
             showBookEvents(book, 1);
         });
         exploreBox.appendChild(btn);
@@ -184,9 +197,39 @@ function continueExploration(choice, level) {
         return;
     }
 
-    exploreBox.innerHTML = `<h3>${choice} - What will you do next?</h3>`;
+    
 
     let nextChoices = getNextChoices(choice);
+    // 🚨 Check if any of the next choices is "Dead"
+    if (nextChoices.includes("DEAD")) {
+        exploreBox.innerHTML = `<h3>💀 Oh no! Your adventure has ended! 💀</h3>`;
+        let restartBtn = document.createElement("button");
+        restartBtn.innerText = "Try Again";
+        restartBtn.addEventListener("click", function () {
+            showBooks(); // Restart the game
+        });
+        exploreBox.appendChild(restartBtn);
+        return; // Prevent further choices from displaying
+    }
+
+    // If no deadly option, continue the game normally
+    exploreBox.innerHTML = `<h3>${choice} - What will you do next?</h3>`;
+
+    // 🎉 Check for "Reward Earned" option
+    if (nextChoices.includes("REWARD")) {
+        exploreBox.innerHTML = `<h3>🏆 Congratulations! You found a secret passage and earned a reward! 🏆</h3>`;
+        let restartBtn = document.createElement("button");
+        restartBtn.innerText = "Continue Exploring";
+        restartBtn.addEventListener("click", function () {
+            showBooks(); // Restart or continue game
+        });
+        exploreBox.appendChild(restartBtn);
+        return; // Stop further choices from showing
+    }
+
+    // If no special condition, continue the game normally
+    exploreBox.innerHTML = `<h3>${choice} - What will you do next?</h3>`;
+
 
     nextChoices.forEach(next => {
         let btn = document.createElement("button");
@@ -208,47 +251,61 @@ function getNextChoices(choice) {
         "Meet Hagrid": ["Visit Diagon Alley","Ask about secret passage", "Explore Hagrid’s Hut"],
         "Visit Diagon Alley":["Grignotts Wizard Bank","olivers wand shop","notice a witch watching you"],
         "Grignotts Wizard Bank": ["withdraw money from family vault and become rich"],
+        "withdraw money from family vault and become rich":["REWARD"],
         "olivers wand shop": ["Let ollivander choose a wand for you", "pick a wand that looks interesting to you", "ask for Harry potters wand"],
         "Let ollivander choose a wand for you": ["first Attempt He hands you a sleek ebony wand.", "Second Attempt He hands you a shorter, twisted oak wand.", "Third Attempt – The Right Wand: ✨"],
-        "first Attempt He hands you a sleek ebony wand.": ["BOOM! "],
+        "first Attempt He hands you a sleek ebony wand.": ["BOOM!"],
+        "BOOM!":["DEAD"],
         "Second Attempt He hands you a shorter, twisted oak wand.": ["a burst of sparks singes the curtains!"],
+        "a burst of sparks singes the curtains!":["DEAD"],
         "Third Attempt – The Right Wand: ✨": ["Solve t a warm glow surrounds you."],
-        "notice a witch watching you": ["Dead"],
+        "Solve t a warm glow surrounds you.":["REWARD"],
+        "notice a witch watching you": ["DEAD"],
         "pick a wand that looks interesting to you":["A sleek black wand with silver engravings ✨ ","A short, twisted oak wand 🌿","A wand with a glowing tip on the shelf 🔥"],
         "A sleek black wand with silver engravings ✨ ":["the lights flicker ominously"],
-        "A short, twisted oak wand 🌿":[" a pile of books catches fire! "],
-        "A wand with a glowing tip on the shelf 🔥":[" zaps you with a shock! "],
+        "the lights flicker ominously":["DEAD"],
+        "A short, twisted oak wand 🌿":["a pile of books catches fire!"],
+        "a pile of books catches fire!":["DEAD"],
+        "A wand with a glowing tip on the shelf 🔥":["zaps you with a shock!"],
+        "zaps you with a shock!":["DEAD"],
         "ask for Harry potters wand":["Gives Holly and Phoenix Feather (Like Harry's) – A wand of great destiny… but are you ready for it?","Willow and Unicorn Hair – Graceful and loyal, perfect for a wise and skilled witch/wizard."],
         "Gives Holly and Phoenix Feather (Like Harry's) – A wand of great destiny… but are you ready for it?":[" a warm energy rushes through your fingers. A soft breeze stirs the dust in the shop, and a faint golden glow surrounds you"],
+        " a warm energy rushes through your fingers. A soft breeze stirs the dust in the shop, and a faint golden glow surrounds you":["REWARD"],
         "Willow and Unicorn Hair – Graceful and loyal, perfect for a wise and skilled witch/wizard.":["The moment you hold it, a soothing warmth spreads through your fingers. A faint shimmer dances along the wand’s length, and the air around you feels lighter."],
+        "The moment you hold it, a soothing warmth spreads through your fingers. A faint shimmer dances along the wand’s length, and the air around you feels lighter.":["REWARD"],
         "Ask about secret passage":["Ask about the safest passage","Insist on learning about the most dangerous one ","Ask if there’s a passage leading to something valuable"],
         "Ask about the safest passage":["One-Eyed Witch Passage","Room of Requirement Passage ","Behind the Mirror on the Fourth Floor"],
-        "One-Eyed Witch Passage":["Valuable discover"],
-        "Room of Requirement Passage ":["Valuble dicover"],
-        "Behind the Mirror on the Fourth Floor":["Valuble discover"],
-        "Insist on learning about the most dangerous one ":["Dead"],
-        "Ask if there’s a passage leading to something valuable":["Earned reward"],
+        "One-Eyed Witch Passage":["REWARD"],
+        "Room of Requirement Passage ":["REWARD"],
+        "Behind the Mirror on the Fourth Floor":["REWARD"],
+        "Insist on learning about the most dangerous one ":["DEAD"],
+        "Ask if there’s a passage leading to something valuable":["REWARD"],
         "Explore Hagrid’s Hut":["The Mysterious Egg ","The Locked Chest ","The Forbidden Forest Warning (Knowledge & Mystery 🌲)"],
-        "The Mysterious Egg ":["egg cracks! A tiny black-scaled dragon struggles out, blinking its bright orange eyes.-DEAD"],
-        "The Locked Chest ":["EARNED A REWARD"],
+        "The Mysterious Egg ":["egg cracks! A tiny black-scaled dragon struggles out, blinking its bright orange eyes"],
+        "egg cracks! A tiny black-scaled dragon struggles out, blinking its bright orange eyes":["DEAD"],
+        "The Locked Chest ":["REWARD"],
         "The Forbidden Forest Warning (Knowledge & Mystery 🌲)":["a silver fabric fragment.","Offer to investigate the forest yourself "],
         "a silver fabric fragment.":["Earned invisibility"],
+        "Earned invisibility":["REWARD"],
         "Offer to investigate the forest yourself ":["DEAD"],  
         "Board Hogwarts Express":["Join Ron Weasley & Harry Potter","Sit Alone & Observe","Find an Empty Compartment"] ,
         "Join Ron Weasley & Harry Potter":["Ron excitedly holds up a box Ever tried Bertie Bott’s Every Flavor Beans? "," Ask Harry about Hogwarts "," Mysterious Knock on the Door → Someone unexpected is at the compartment door. Will you open it"],
-        "Ron excitedly holds up a box Ever tried Bertie Bott’s Every Flavor Beans? ":["dead"],
+        "Ron excitedly holds up a box Ever tried Bertie Bott’s Every Flavor Beans? ":["DEAD"],
         " Ask Harry about Hogwarts ":["get to know abouts secrets"],
+        "get to know abouts secrets":["REWARD"],
         " Mysterious Knock on the Door → Someone unexpected is at the compartment door. Will you open it":["Draco Malfoy & His Gang "," Hermione Granger "],
         "Draco Malfoy & His Gang ":["DEAD"],
-        " Hermione Granger ":["EARNED"],
+        " Hermione Granger ":["REWARD"],
         "Find an Empty Compartment":["A Strange Note on the Seat ","A Mysterious Chill "],
         "A Strange Note on the Seat ":["Mora Portus.Whisper these words, and the path will shift.Your heart pounds. A spell? Could this be a secret way to reach Hogwarts instantly?"],
+        "Mora Portus.Whisper these words, and the path will shift.Your heart pounds. A spell? Could this be a secret way to reach Hogwarts instantly?":["REWARD"],
         "A Mysterious Chill ":["DEAD"],
         "Sit Alone & Observe":["A Hooded Figure Passes By"," 🦉 An Owl Taps on the Window ","A Soft Glow Under the Seat"],
-        "A Hooded Figure Passes By":["dead"],
+        "A Hooded Figure Passes By":["DEAD"],
         " 🦉 An Owl Taps on the Window ":["REWARD"],
         "A Soft Glow Under the Seat":["REWARD"],
-        "Ignore Letter":["No adventures life your lose!"]
+        "Ignore Letter":["No adventures life your lose!"],
+        "No adventures life your lose!":["DEAD"]
 
 
 
@@ -278,6 +335,21 @@ function addBackButton() {
         exploreBox.appendChild(backBtn);
     }
 }
+// Function to restart game
+function addRestartButton() {
+    let exploreBox = document.getElementById("explore-box");
+    let restartBtn = document.createElement("button");
+    restartBtn.innerText = "🔄 Restart Game";
+    restartBtn.addEventListener("click", function () {
+        lives = 3;
+        rewards = [];
+        level = 1;
+        updateStats();
+        showBooks();
+    });
+    exploreBox.appendChild(restartBtn);
+}
+
 
 // Attach the event listener to your existing Explore button
 document.getElementById("explore-btn").addEventListener("click", showBooks);
