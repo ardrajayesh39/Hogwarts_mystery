@@ -318,23 +318,23 @@ function getNextChoices(choice) {
 }
 
 // Function to add a "Back" button to return to the previous step
-function addBackButton() {
-    if (historyStack.length > 0) {
-        let exploreBox = document.getElementById("explore-box");
-        let backBtn = document.createElement("button");
-        backBtn.innerText = "⬅️ Go Back";
-        backBtn.classList.add("back-option");
-        backBtn.addEventListener("click", function () {
-            let previous = historyStack.pop();
-            if (previous.book) {
-                showBookEvents(previous.book, previous.level);
-            } else {
-                continueExploration(previous.choice, previous.level);
-            }
-        });
-        exploreBox.appendChild(backBtn);
-    }
-}
+// function addBackButton() {
+//     if (historyStack.length > 0) {
+//         let exploreBox = document.getElementById("explore-box");
+//         let backBtn = document.createElement("button");
+//         // backBtn.innerText = "⬅️ Go Back";
+//         // backBtn.classList.add("back-option");
+//         backBtn.addEventListener("click", function () {
+//             let previous = historyStack.pop();
+//             if (previous.book) {
+//                 showBookEvents(previous.book, previous.level);
+//             } else {
+//                 continueExploration(previous.choice, previous.level);
+//             }
+//         });
+//         exploreBox.appendChild(backBtn);
+//     }
+// }
 // Function to restart game
 function addRestartButton() {
     let exploreBox = document.getElementById("explore-box");

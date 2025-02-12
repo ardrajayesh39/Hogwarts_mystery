@@ -395,6 +395,11 @@ button:hover {
     }
 }
 
+#lives, #level, #reward {
+    display: none;
+}
+
+
 
 /* Common Room */
 #common-room {
