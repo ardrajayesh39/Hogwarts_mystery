@@ -203,55 +203,81 @@ button:hover {
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
-    /* background: rgba(0, 0, 0, 0.8); */
-    padding: 30px;
-    /* border: 3px solid gold; */
-    /* border-radius: 10px; */
+    padding: 20px;
     text-align: center;
     display: flex;
     flex-direction: column;
-    width: 550px;
-    /* box-shadow: 0 0 20px gold; */
+    width: 90%;
+    max-width: 550px;
     display: none; 
     font-family: 'HarryP', serif;
     color: #ffcc00;
 }
 
+/* Adjust main text & icons for smaller screens */
+@media screen and (max-width: 600px) {
+    #house-box {
+        width: 95%;
+        padding: 8px;
+    }
 
+    #house-text {
+        font-size: 30px;  /* Reduce text size more */
+        margin-bottom: 10px;
+    }
+
+    .house-options {
+        gap: 2px; /* Minimize gap */
+    }
+
+    .house-icon {
+        width: 40px;  /* Further shrink icons */
+        height: 40px;
+    }
+
+    .house-name {
+        font-size: 12px;  /* Reduce name size */
+        margin-top: 3px;
+    }
+}
+
+/* Default styles for larger screens */
 #house-text {
     font-size: 70px;
     font-weight: bold;
     margin-bottom: 80px;
-    font-weight: bold;
     text-align: center;
-    
 }
-
 
 .house-options {
     display: flex;
-    justify-content: space-around;
+    justify-content: space-between; /* Ensure even spacing */
     align-items: center;
-    gap: 40px;
+    gap: 15px;
+    flex-wrap: nowrap; /* Forces everything in one row */
+    width: 100%;
 }
 
-
-
+.house {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    flex: 1; /* Ensures equal spacing */
+}
 
 .house-icon {
-    width: 90px;
-    height: 90px;
+    width: 80px;
+    height: 80px;
     transition: transform 0.3s, filter 0.3s;
 }
 
-
 .house-name {
-    font-size: 40px;
+    font-size: 25px;
     font-weight: bold;
     color: #ffcc00;
-    margin-top: 30px;
+    margin-top: 15px;
 }
-
 
 .house:hover .house-icon {
     transform: scale(1.2);
@@ -316,32 +342,33 @@ button:hover {
 
 /* Pet Selection */
 
-#pet-box ,#wand-box{
+#pet-box, #wand-box {
     position: absolute;
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
     margin: 0;
     display: flex;
-    justify-content: center;  /* Centers horizontally */
+    flex-direction: column;
+    justify-content: center;
     align-items: center;
-    padding: 30px;
+    padding: 30px; /* Increased padding */
     text-align: center;
-    width: 300px;
+    width: 280px; /* Increased width */
     font-family: 'HarryP', serif;
 }
 
-#pet-box h2 ,#wand-box h2{
-    font-size: 50px !important;
+/* Default styles for larger screens */
+#pet-box h2, #wand-box h2 {
+    font-size: 55px !important; /* Increased heading size */
 }
 
-
-.pet-option ,.wand-option{
+.pet-option, .wand-option {
     display: inline-block;
-    width: 400px;
-    padding: 15px;
-    margin: 10px;
-    font-size: 20px;
+    width: 300px; /* Increased width */
+    padding: 14px; /* Increased padding */
+    margin: 8px;
+    font-size: 20px; /* Increased text size */
     background: red;
     color: black;
     border-radius: 10px;
@@ -349,14 +376,24 @@ button:hover {
     transition: 0.3s;
 }
 
-.pet-option:hover,.wand-option:hover{
-    background-color: black;
-    color: red;
-    transform: scale(1.1);
-    box-shadow: 0 0 10px white;
+/* Responsive styles for smaller screens */
+@media screen and (max-width: 600px) {
+    #pet-box, #wand-box {
+        width: 260px; /* Increased width */
+        padding: 25px; /* Slightly larger padding */
+    }
+
+    #pet-box h2, #wand-box h2 {
+        font-size: 40px !important; /* Increased heading size */
+    }
+
+    .pet-option, .wand-option {
+        width: 230px; /* Increased button width */
+        font-size: 16px; /* Increased font size */
+        padding: 12px; /* Increased padding */
+        margin: 6px; /* More spacing */
+    }
 }
-
-
 
 
 /* Common Room */
@@ -477,4 +514,35 @@ button:hover {
     width: 50px;
     height: 50px;
     border-radius: 5px;
+}
+/* Responsive Styles */
+@media screen and (max-width: 1024px) {
+  .container {
+    width: 90%;
+  }
+
+  .card {
+    width: 45%;
+  }
+}
+
+@media screen and (max-width: 768px) {
+  .navbar {
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .card {
+    width: 80%;
+  }
+}
+
+@media screen and (max-width: 480px) {
+  .container {
+    width: 95%;
+  }
+
+  .card {
+    width: 100%;
+  }
 }
