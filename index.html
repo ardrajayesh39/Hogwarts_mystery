@@ -8,7 +8,7 @@
 </head>
 <body>
 
-    <script src="script.js"></script>
+    
 
 
     <div id="game-container">
@@ -70,7 +70,19 @@
         <div class="pet-option" data-pet="Rat">🐭 Rat</div>
     </div>
 
+    <div id="wand-box" style="display: none;">
+        <h2>Choose Your Wand</h2>
+        <div id="wand-selection">
+            <div class="wand-option" data-wand="Holly & Phoenix Feather">Holly & Phoenix Feather</div>
+            <div class="wand-option" data-wand="Oak & Dragon Heartstring">Oak & Dragon Heartstring</div>
+            <div class="wand-option" data-wand="Willow & Unicorn Hair">Willow & Unicorn Hair</div>
+            <div class="wand-option" data-wand="Yew & Basilisk Fang">Yew & Basilisk Fang</div>
+        </div>
+    </div>
     
+
+    <div id="next-steps"></div>
+
 
 
 
@@ -79,19 +91,52 @@
     <div id="common-room" class="hidden">
          <h1 id="welcome-text"></h1>
          <p id="common-room-desc"></p>
+         <p id="pet-display"></p>
+         <p id="wand-display"></p>
+
 
          <div class="common-room-options">
-             <button onclick="exploreCommonRoom()">Explore</button>
-             <button onclick="talkToSenior()">Talk to a Senior</button>
-             <button onclick="goToDorm()">Go to Dormitory</button>
-             <p id="pet-display" style="font-weight: bold; color: white;"></p>
-         </div>
-    </div>
+            <button id="explore-btn">Explore</button>
+            <!-- <button onclick="solveamystery()">Solve a Mystery</button>
+            <button onclick="goToDorm()">Go to Dormitory</button> -->
+        </div>
+        
+        <!-- Explore Location Choices -->
+        <div id="explore-box" class="hidden">
+            <h2>Where do you want to explore?</h2>
+            <div class="explore-options">
+                <button onclick="startExploration('Forbidden Forest')">
+                    <img src="images/forbiddenforest.jpg" alt="Forbidden Forest">
+                    Forbidden Forest
+                </button>
+                <button onclick="startExploration('Library')">
+                    <img src="images/library.jpg" alt="Library">
+                    Library
+                </button>
+                <button onclick="startExploration('Secret Passage')">
+                    <img src="images/secretpassage.jpg" alt="Secret Passage">
+                    Secret Passage
+                </button>
+            </div>
+        </div>
+        
+
+<!-- Multi-step Exploration Choices -->
+<div id="explore-location-box" class="hidden">
+    <h2 id="location-title"></h2>
+    <div id="location-options"></div>
+    <p id="location-result"></p>
+</div>
 
 
+<div id="level-display">Level: 1</div>
+
+
+
+        
 
     
 
-
+    <script src="script.js"></script>
 </body>
 </html>

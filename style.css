@@ -12,7 +12,9 @@ body {
     text-align: center;
     padding: 20px;
 }
-
+#next-steps {
+    display: block;
+}
 
 #game-container {
     max-width: 600px;
@@ -314,7 +316,7 @@ button:hover {
 
 /* Pet Selection */
 
-#pet-box {
+#pet-box ,#wand-box{
     position: absolute;
     top: 50%;
     left: 50%;
@@ -329,12 +331,12 @@ button:hover {
     font-family: 'HarryP', serif;
 }
 
-#pet-box h2 {
+#pet-box h2 ,#wand-box h2{
     font-size: 50px !important;
 }
 
 
-.pet-option {
+.pet-option ,.wand-option{
     display: inline-block;
     width: 400px;
     padding: 15px;
@@ -347,12 +349,15 @@ button:hover {
     transition: 0.3s;
 }
 
-.pet-option:hover {
+.pet-option:hover,.wand-option:hover{
     background-color: black;
     color: red;
     transform: scale(1.1);
     box-shadow: 0 0 10px white;
 }
+
+
+
 
 /* Common Room */
 #common-room {
@@ -365,4 +370,111 @@ button:hover {
     color: gold;
     margin-top: 10px;
     font-weight: bold;
+}
+
+.hidden {
+    display: none;
+}
+
+#explore-box {
+    /* background: rgba(0, 0, 0, 0.8); */
+    color: white;
+    padding: 20px;
+    border-radius: 10px;
+    text-align: center;
+    display: none;
+
+}
+#explore-box h2 {
+    font-size: 2rem; /* Increase size (adjust as needed) */
+    font-weight: bold; /* Make it bold */
+    text-align: center; /* Center text */
+}
+
+
+.explore-option {
+    background: #8b0000;
+    color: white;
+    padding: 10px;
+    margin: 5px;
+    border-radius: 5px;
+    cursor: pointer;
+    border: none;
+}
+
+#explore-location-box {
+    background: rgba(0, 0, 0, 0.8);
+    color: white;
+    padding: 20px;
+    border-radius: 10px;
+    text-align: center;
+    display: none;
+}
+
+.explore-choice {
+    background: #4b0082;
+    color: white;
+    padding: 10px;
+    margin: 5px;
+    border-radius: 5px;
+    cursor: pointer;
+    border: none;
+}
+
+#level-display {
+    position: absolute;
+    top: 10px;
+    right: 20px;
+    background-color: rgba(0, 0, 0, 0.7);
+    color: white;
+    padding: 8px 15px;
+    border-radius: 5px;
+    font-size: 16px;
+    font-weight: bold;
+}
+.event-option, .next-option, .explore-option {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    background: linear-gradient(to right, #2b1a0d, #5d4037); /* Aged parchment look */
+    color: #f8e5be; /* Golden glow text */
+    border: 2px solid #9c7348; /* Old scroll border */
+    padding: 12px 15px;
+    font-size: 18px;
+    font-family: 'Lumos', serif; /* Add a Harry Potter-style font */
+    border-radius: 8px;
+    cursor: pointer;
+    margin: 8px 0;
+    width: 100%;
+    text-align: left;
+    transition: 0.3s ease-in-out;
+    position: relative;
+    box-shadow: 0px 0px 15px rgba(255, 215, 0, 0.3); /* Subtle golden glow */
+}
+
+/* Hover Effect - Glowing like a spell */
+.event-option:hover, .next-option:hover, .explore-option:hover {
+    background: linear-gradient(to right, #3a240f, #75522e); /* Darker parchment */
+    color: #ffd700; /* Bright magical gold */
+    border: 2px solid #c9a063;
+    box-shadow: 0px 0px 20px rgba(255, 223, 0, 0.7); /* Stronger golden glow */
+    transform: scale(1.05); /* Slight zoom-in effect */
+}
+
+/* Adding Wand Spark Effect on Click */
+.event-option:active, .next-option:active, .explore-option:active {
+    animation: wandSpark 0.3s ease-out;
+}
+
+@keyframes wandSpark {
+    0% { box-shadow: 0px 0px 10px rgba(255, 223, 0, 0.9); }
+    50% { box-shadow: 0px 0px 25px rgba(255, 223, 0, 0.6); }
+    100% { box-shadow: 0px 0px 10px rgba(255, 223, 0, 0.3); }
+}
+
+
+.button-image {
+    width: 50px;
+    height: 50px;
+    border-radius: 5px;
 }
