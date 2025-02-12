@@ -5,7 +5,7 @@
 
 
 body {
-    font-family: 'Georgia', serif;
+    font-family: 'HarryP', serif;
     background: url('images/hogwart_home.jpg') no-repeat center center fixed;
     background-size: cover;
     color: #ffcc00; 
@@ -27,7 +27,7 @@ body {
 
 #story-text {
     font-family: 'HarryP', serif;
-    font-size: 50px;
+    font-size: 60px;
     text-shadow: 3px 3px 5px black;
     color: #ffcc00;
 }
@@ -53,7 +53,7 @@ button:hover {
     position: fixed;
     top: 50%;
     left: 50%;
-    transform: translate(-50%, -50%); /* should look */
+    transform: translate(-50%, -50%); 
     background: rgba(0, 0, 0, 0.8);
     padding: 30px;
     border: 3px solid gold;
@@ -70,13 +70,13 @@ button:hover {
 
 
 #consent-text {
-    font-size: 24px;
+    font-size: 30px;
     margin-bottom: 20px;
 }
 
 
 #yes-btn, #no-btn {
-    font-size: 18px;
+    font-size: 25px;
     font-family: 'HarryP', serif;
     padding: 8px 20px;
     margin: 5px;
@@ -116,13 +116,13 @@ button:hover {
 
 
 #maybe-text {
-    font-size: 22px;
+    font-size: 30px;
     margin-bottom: 20px;
 }
 
 
 #ok-btn {
-    font-size: 18px;
+    font-size: 20px;
     font-family: 'HarryP', serif;
     padding: 8px 20px;
     border: 2px solid red;
@@ -160,15 +160,15 @@ button:hover {
 }
 
 #name-text {
-    font-size: 22px;
+    font-size: 33px;
     margin-bottom: 15px;
 }
 
 
 #player-name {
-    font-size: 18px;
+    font-size: 20px;
     padding: 5px;
-    width: 80%;
+    width: 90%;
     margin-bottom: 15px;
     text-align: center;
     border: 2px solid gold;
@@ -180,7 +180,7 @@ button:hover {
 
 
 #start-btn {
-    font-size: 18px;
+    font-size: 25px;
     font-family: 'HarryP', serif;
     padding: 8px 20px;
     border: 2px solid gold;
@@ -214,7 +214,7 @@ button:hover {
     color: #ffcc00;
 }
 
-/* Adjust main text & icons for smaller screens */
+/* RESPONSIVE WITHIN SMALL SCREEN*/
 @media screen and (max-width: 600px) {
     #house-box {
         width: 95%;
@@ -222,39 +222,46 @@ button:hover {
     }
 
     #house-text {
-        font-size: 30px;  /* Reduce text size more */
+        font-size: 30px;  
         margin-bottom: 10px;
     }
 
     .house-options {
-        gap: 2px; /* Minimize gap */
+        gap: 2px; 
     }
 
     .house-icon {
-        width: 40px;  /* Further shrink icons */
+        width: 40px;  
         height: 40px;
+        transition: transform 0.3s, filter 0.3s;
     }
+   
 
     .house-name {
-        font-size: 12px;  /* Reduce name size */
+        font-size: 12px;  
         margin-top: 3px;
+    }
+    .house:hover .house-icon {
+        transform: scale(1.2);
+        filter: drop-shadow(0 0 10px gold);
     }
 }
 
-/* Default styles for larger screens */
+
 #house-text {
     font-size: 70px;
     font-weight: bold;
+    text-shadow: 3px 3px 5px black;
     margin-bottom: 80px;
     text-align: center;
 }
 
 .house-options {
     display: flex;
-    justify-content: space-between; /* Ensure even spacing */
+    justify-content: space-between; 
     align-items: center;
     gap: 15px;
-    flex-wrap: nowrap; /* Forces everything in one row */
+    flex-wrap: nowrap; 
     width: 100%;
 }
 
@@ -263,7 +270,7 @@ button:hover {
     flex-direction: column;
     align-items: center;
     text-align: center;
-    flex: 1; /* Ensures equal spacing */
+    flex: 1; 
 }
 
 .house-icon {
@@ -273,9 +280,10 @@ button:hover {
 }
 
 .house-name {
-    font-size: 25px;
+    font-size: 30px;
     font-weight: bold;
     color: #ffcc00;
+    text-shadow: 3px 3px 5px black;
     margin-top: 15px;
 }
 
@@ -284,32 +292,34 @@ button:hover {
     filter: drop-shadow(0 0 10px gold);
 }
 
-/* Hide elements initially */
+
 .hidden {
     display: none;
 }
 
-/* Common Room Styling */
+
 #common-room {
     text-align: center;
     padding: 30px;
     color: #ffcc00;
+    text-shadow: 3px 3px 5px black;
     font-family: 'HarryP', serif;
 }
 
 #common-room h1 {
-    font-size: 40px;
+    font-size: 43px;
     margin-bottom: 15px;
 }
 
 #common-room p {
-    font-size: 18px;
+    font-size: 30px;
     max-width: 600px;
+    font-weight: 100;
     margin: auto;
 }
 
 .common-room-options {
-    margin-top: 20px;
+    margin-top: 30px;
 }
 
 .common-room-options button {
@@ -336,11 +346,11 @@ button:hover {
     background-size: cover;
     background-position: center;
     background-attachment: fixed;
-    filter: blur(3px); /* Adjust blur level */
-    z-index: -1; /* Keeps it behind everything */
+    filter: blur(5px); 
+    z-index: -1; 
 }
 
-/* Pet Selection */
+
 
 #pet-box, #wand-box {
     position: absolute;
@@ -352,23 +362,25 @@ button:hover {
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    padding: 30px; /* Increased padding */
+    padding: 30px; 
     text-align: center;
-    width: 280px; /* Increased width */
+    width: 280px; 
     font-family: 'HarryP', serif;
 }
 
-/* Default styles for larger screens */
-#pet-box h2, #wand-box h2 {
-    font-size: 55px !important; /* Increased heading size */
+
+ #pet-box h2, #wand-box h2 {
+    font-size: 55px !important; 
+    text-shadow: 3px 3px 5px black;
 }
+
 
 .pet-option, .wand-option {
     display: inline-block;
-    width: 300px; /* Increased width */
-    padding: 14px; /* Increased padding */
+    width: 150px; 
+    padding: 14px; 
     margin: 8px;
-    font-size: 20px; /* Increased text size */
+    font-size: 30px; 
     background: red;
     color: black;
     border-radius: 10px;
@@ -376,22 +388,22 @@ button:hover {
     transition: 0.3s;
 }
 
-/* Responsive styles for smaller screens */
+/* RESPONSIVE WITHIN SMALL SCREEN */
 @media screen and (max-width: 600px) {
     #pet-box, #wand-box {
-        width: 260px; /* Increased width */
-        padding: 25px; /* Slightly larger padding */
+        width: 260px; 
+        padding: 25px; 
     }
 
     #pet-box h2, #wand-box h2 {
-        font-size: 40px !important; /* Increased heading size */
+        font-size: 40px !important; 
     }
 
     .pet-option, .wand-option {
-        width: 230px; /* Increased button width */
-        font-size: 16px; /* Increased font size */
-        padding: 12px; /* Increased padding */
-        margin: 6px; /* More spacing */
+        width: 230px; 
+        font-size: 20px; 
+        padding: 12px;
+        margin: 6px;
     }
 }
 
@@ -401,7 +413,6 @@ button:hover {
 
 
 
-/* Common Room */
 #common-room {
     padding: 30px;
     margin-top: 30px;
@@ -419,7 +430,6 @@ button:hover {
 }
 
 #explore-box {
-    /* background: rgba(0, 0, 0, 0.8); */
     color: white;
     padding: 20px;
     border-radius: 10px;
@@ -428,12 +438,14 @@ button:hover {
 
 }
 #explore-box h2 {
-    font-size: 2rem; /* Increase size (adjust as needed) */
-    font-weight: bold; /* Make it bold */
-    text-align: center; /* Center text */
+    font-size: 30px; 
+    font-weight: bold; 
+    text-align: center; 
 }
-
-
+#explore-box h3{
+    font-size: 40px;
+    text-shadow: 3px 3px 5px black;
+}
 .explore-option {
     background: #8b0000;
     color: white;
@@ -463,47 +475,36 @@ button:hover {
     border: none;
 }
 
-#level-display {
-    position: absolute;
-    top: 10px;
-    right: 20px;
-    background-color: rgba(0, 0, 0, 0.7);
-    color: white;
-    padding: 8px 15px;
-    border-radius: 5px;
-    font-size: 16px;
-    font-weight: bold;
-}
 .event-option, .next-option, .explore-option {
     display: flex;
     align-items: center;
     gap: 10px;
-    background: linear-gradient(to right, #2b1a0d, #5d4037); /* Aged parchment look */
-    color: #f8e5be; /* Golden glow text */
-    border: 2px solid #9c7348; /* Old scroll border */
+    background: linear-gradient(to right, #2b1a0d, #5d4037);
+    color: #f8e5be;
+    border: 2px solid #9c7348; 
     padding: 12px 15px;
     font-size: 18px;
-    font-family: 'Lumos', serif; /* Add a Harry Potter-style font */
+    font-family: 'Lumos', serif; 
     border-radius: 8px;
     cursor: pointer;
     margin: 8px 0;
-    width: 100%;
+    width: 90%;
     text-align: left;
     transition: 0.3s ease-in-out;
     position: relative;
-    box-shadow: 0px 0px 15px rgba(255, 215, 0, 0.3); /* Subtle golden glow */
+    box-shadow: 0px 0px 15px rgba(255, 215, 0, 0.3); 
 }
 
-/* Hover Effect - Glowing like a spell */
+
 .event-option:hover, .next-option:hover, .explore-option:hover {
-    background: linear-gradient(to right, #3a240f, #75522e); /* Darker parchment */
-    color: #ffd700; /* Bright magical gold */
+    background: linear-gradient(to right, #3a240f, #75522e);
+    color: #ffd700; 
     border: 2px solid #c9a063;
-    box-shadow: 0px 0px 20px rgba(255, 223, 0, 0.7); /* Stronger golden glow */
-    transform: scale(1.05); /* Slight zoom-in effect */
+    box-shadow: 0px 0px 20px rgba(255, 223, 0, 0.7); 
+    transform: scale(1.05); 
 }
 
-/* Adding Wand Spark Effect on Click */
+
 .event-option:active, .next-option:active, .explore-option:active {
     animation: wandSpark 0.3s ease-out;
 }
@@ -532,10 +533,6 @@ button:hover {
 }
 
 @media screen and (max-width: 768px) {
-  .navbar {
-    flex-direction: column;
-    align-items: center;
-  }
 
   .card {
     width: 80%;
