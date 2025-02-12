@@ -143,6 +143,13 @@ function updateStats() {
 
 // Function to show book selection
 function showBooks() {
+    document.getElementById("welcome-text").style.display = "none";
+    document.getElementById("common-room-desc").style.display = "none";
+    document.getElementById("pet-display").style.display = "none";
+    document.getElementById("wand-display").style.display = "none";
+     
+    document.querySelector(".common-room-options").style.display = "block";
+    
     let exploreBox = document.getElementById("explore-box");
     exploreBox.innerHTML = "<h3>Select an Adventure</h3>";
     
@@ -178,8 +185,37 @@ function showBookEvents(book, level) {
         exploreBox.appendChild(btn);
     });
 
-    addBackButton();
+
 }
+
+// Function to show animation for rewards
+function showRewardAnimation() {
+    let exploreBox = document.getElementById("explore-box");
+    exploreBox.innerHTML = `<h3 class="reward-animation">🏆 Congratulations! You found a secret passage and earned a reward! 🏆</h3>`;
+    
+    let restartBtn = document.createElement("button");
+    restartBtn.innerText = "Continue Exploring";
+    restartBtn.addEventListener("click", function () {
+        showBooks();
+    });
+
+    exploreBox.appendChild(restartBtn);
+}
+
+// Function to show animation for death
+function showDeathAnimation() {
+    let exploreBox = document.getElementById("explore-box");
+    exploreBox.innerHTML = `<h3 class="death-animation">💀 Oh no! Your adventure has ended! 💀</h3>`;
+
+    let restartBtn = document.createElement("button");
+    restartBtn.innerText = "Try Again";
+    restartBtn.addEventListener("click", function () {
+        showBooks();
+    });
+
+    exploreBox.appendChild(restartBtn);
+}
+
 
 // Recursive function for continued exploration
 function continueExploration(choice, level) {
@@ -200,6 +236,20 @@ function continueExploration(choice, level) {
     
 
     let nextChoices = getNextChoices(choice);
+
+
+    // If dead, trigger death animation
+    if (nextChoices.includes("DEAD")) {
+        showDeathAnimation();
+        return;
+    }
+
+    // If reward earned, trigger reward animation
+    if (nextChoices.includes("REWARD")) {
+        showRewardAnimation();
+        return;
+    }
+
     // 🚨 Check if any of the next choices is "Dead"
     if (nextChoices.includes("DEAD")) {
         exploreBox.innerHTML = `<h3>💀 Oh no! Your adventure has ended! 💀</h3>`;
@@ -242,7 +292,6 @@ function continueExploration(choice, level) {
         exploreBox.appendChild(btn);
     });
 
-    addBackButton();
 }
 
 // Function to dynamically generate next level choices based on previous selection
